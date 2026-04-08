@@ -1,0 +1,22 @@
+{
+  "name": "Productivity Tasks",
+  "short_name": "Tasks",
+  "description": "Your personal task manager",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f5ede0",
+  "theme_color": "#c0392b",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
