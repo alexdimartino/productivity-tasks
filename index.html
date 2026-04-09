@@ -13,80 +13,348 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f5ede0;
+      background: #f0ede8;
       min-height: 100vh;
       padding-bottom: env(safe-area-inset-bottom);
     }
 
+    /* ── Header ── */
     .header {
       background: #fff;
       padding: 16px 20px 0;
       padding-top: calc(16px + env(safe-area-inset-top));
-      box-shadow: 0 1px 0 #e8ddd0;
+      box-shadow: 0 1px 0 #e8e0d8;
       position: sticky;
       top: 0;
       z-index: 100;
     }
 
-    .header-top { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-    .header-icon { width: 36px; height: 36px; background: #c0392b; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .header-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .header-icon {
+      width: 36px; height: 36px;
+      background: #e05a3a;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
     .header-icon svg { width: 20px; height: 20px; fill: white; }
-    .header-title { font-size: 22px; font-weight: 700; color: #1a1a1a; }
-    .tabs { display: flex; gap: 4px; }
-    .tab { padding: 8px 20px; border-radius: 8px 8px 0 0; font-size: 14px; font-weight: 600; cursor: pointer; border: none; background: transparent; color: #888; transition: all 0.2s; }
-    .tab.active { background: #f5ede0; color: #1a1a1a; }
-    .content { padding: 16px; max-width: 600px; margin: 0 auto; }
-    .priority-section { margin-bottom: 20px; }
-    .priority-header { background: #fce8e8; padding: 10px 14px; border-radius: 8px 8px 0 0; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; color: #8b3333; text-transform: uppercase; display: flex; align-items: center; justify-content: space-between; }
-    .priority-header.medium { background: #fef3e2; color: #7a5c1e; }
-    .priority-header.low { background: #e8f5e9; color: #2e6b2e; }
-    .priority-body { background: #fff; border-radius: 0 0 8px 8px; overflow: hidden; }
-    .task-card { border-left: 4px solid #c0392b; padding: 14px 14px 14px 16px; border-bottom: 1px solid #f0e8e0; position: relative; }
-    .task-card.medium { border-left-color: #e67e22; }
-    .task-card.low { border-left-color: #27ae60; }
+
+    .header-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 4px;
+    }
+
+    .tab {
+      padding: 8px 20px;
+      border-radius: 8px 8px 0 0;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #999;
+      transition: all 0.2s;
+    }
+
+    .tab.active {
+      background: #f0ede8;
+      color: #1a1a1a;
+    }
+
+    /* ── Content ── */
+    .content {
+      padding: 14px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ── Section ── */
+    .task-section { margin-bottom: 16px; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+
+    .section-header {
+      padding: 10px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-count {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin-left: auto;
+    }
+
+    /* Section colour themes */
+    .section-header.in-progress  { background: #eeeaf3; color: #5a4e72; }
+    .section-count.in-progress   { background: #c8bfe0; color: #5a4e72; }
+
+    .section-header.high         { background: #f5e8e8; color: #8b3333; }
+    .section-count.high          { background: #e8c8c8; color: #8b3333; }
+
+    .section-header.medium       { background: #f5efe3; color: #7a5c1e; }
+    .section-count.medium        { background: #e8d4aa; color: #7a5c1e; }
+
+    .section-header.low          { background: #e8f3e8; color: #2e6b2e; }
+    .section-count.low           { background: #b8d8b8; color: #2e6b2e; }
+
+    .section-body {
+      background: #fff;
+    }
+
+    /* ── Task Card ── */
+    .task-card {
+      border-left: 4px solid #ddd;
+      padding: 12px 12px 12px 14px;
+      border-bottom: 1px solid #f2ede8;
+    }
+
     .task-card:last-child { border-bottom: none; }
-    .task-row { display: flex; align-items: flex-start; gap: 12px; }
-    .checkbox { width: 22px; height: 22px; border: 2px solid #ddd; border-radius: 6px; cursor: pointer; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; background: #fff; }
-    .checkbox.checked { background: #c0392b; border-color: #c0392b; }
-    .checkbox.checked::after { content: ''; width: 12px; height: 7px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg) translate(1px, -1px); display: block; }
+    .task-card.in-progress { border-left-color: #9b87c2; }
+    .task-card.high        { border-left-color: #d94040; }
+    .task-card.medium      { border-left-color: #e67e22; }
+    .task-card.low         { border-left-color: #4caf6e; }
+
+    .task-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .checkbox {
+      width: 20px; height: 20px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 2px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.15s;
+      background: #fff;
+    }
+
+    .checkbox.checked { background: #d94040; border-color: #d94040; }
+    .checkbox.checked::after {
+      content: '';
+      width: 11px; height: 6px;
+      border-left: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      transform: rotate(-45deg) translate(1px, -1px);
+      display: block;
+    }
+
     .task-body { flex: 1; min-width: 0; }
-    .task-title { font-size: 15px; font-weight: 500; color: #1a1a1a; line-height: 1.3; }
-    .task-title.done { text-decoration: line-through; color: #aaa; }
-    .task-note { font-size: 12px; color: #aaa; margin-top: 2px; }
-    .task-actions { display: flex; gap: 6px; margin-left: auto; flex-shrink: 0; }
-    .btn-icon { width: 28px; height: 28px; border: none; background: transparent; cursor: pointer; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #bbb; }
+
+    .task-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a1a;
+      line-height: 1.35;
+    }
+
+    .task-title.done { text-decoration: line-through; color: #bbb; }
+
+    .task-note {
+      font-size: 12px;
+      color: #999;
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+
+    .task-actions {
+      display: flex;
+      gap: 4px;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .btn-icon {
+      width: 26px; height: 26px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      color: #ccc;
+      transition: background 0.15s, color 0.15s;
+    }
+
     .btn-icon:hover { background: #f5f5f5; color: #666; }
-    .btn-icon.delete:hover { color: #c0392b; }
-    .subtasks { margin-top: 10px; margin-left: 34px; display: flex; flex-direction: column; gap: 6px; }
-    .subtask-row { display: flex; align-items: center; gap: 8px; }
-    .subtask-checkbox { width: 16px; height: 16px; border: 2px solid #ddd; border-radius: 4px; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #fff; transition: all 0.15s; }
-    .subtask-checkbox.checked { background: #c0392b; border-color: #c0392b; }
-    .subtask-checkbox.checked::after { content: ''; width: 8px; height: 5px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg) translate(1px, -1px); display: block; }
-    .subtask-text { font-size: 13px; color: #555; flex: 1; }
+    .btn-icon.delete:hover { color: #d94040; }
+
+    /* ── Subtasks ── */
+    .subtasks {
+      margin-top: 8px;
+      margin-left: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .subtask-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .subtask-checkbox {
+      width: 15px; height: 15px;
+      border: 2px solid #ccc;
+      border-radius: 3px;
+      cursor: pointer;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: #fff;
+      transition: all 0.15s;
+    }
+
+    .subtask-checkbox.checked { background: #d94040; border-color: #d94040; }
+    .subtask-checkbox.checked::after {
+      content: '';
+      width: 7px; height: 4px;
+      border-left: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      transform: rotate(-45deg) translate(1px, -1px);
+      display: block;
+    }
+
+    .subtask-text { font-size: 12px; color: #666; flex: 1; }
     .subtask-text.done { text-decoration: line-through; color: #bbb; }
-    .subtask-delete { font-size: 13px; color: #ccc; cursor: pointer; padding: 2px 4px; }
-    .add-task-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 14px; background: #fff; border: 2px dashed #ddd; border-radius: 8px; color: #aaa; font-size: 14px; font-weight: 500; cursor: pointer; margin-top: 8px; transition: all 0.2s; }
-    .add-task-btn:hover { border-color: #c0392b; color: #c0392b; }
-    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; display: flex; align-items: flex-end; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
+    .subtask-delete { font-size: 12px; color: #ddd; cursor: pointer; padding: 2px 4px; }
+
+    /* ── Add task row ── */
+    .add-task-row {
+      background: #fff;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #bbb;
+      font-size: 13px;
+      cursor: pointer;
+      border-top: 1px solid #f2ede8;
+      transition: color 0.2s;
+    }
+
+    .add-task-row:hover { color: #888; }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 200;
+      display: flex;
+      align-items: flex-end;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+
     .modal-overlay.open { opacity: 1; pointer-events: all; }
-    .modal { background: #fff; border-radius: 20px 20px 0 0; padding: 24px 20px; padding-bottom: calc(24px + env(safe-area-inset-bottom)); width: 100%; transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1); }
+
+    .modal {
+      background: #fff;
+      border-radius: 20px 20px 0 0;
+      padding: 24px 20px;
+      padding-bottom: calc(24px + env(safe-area-inset-bottom));
+      width: 100%;
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
     .modal-overlay.open .modal { transform: translateY(0); }
+
     .modal h3 { font-size: 17px; font-weight: 700; margin-bottom: 16px; color: #1a1a1a; }
+
     .modal-field { margin-bottom: 14px; }
-    .modal-field label { display: block; font-size: 12px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-    .modal-field input, .modal-field select { width: 100%; padding: 12px 14px; border: 1.5px solid #e8e0d8; border-radius: 10px; font-size: 15px; color: #1a1a1a; background: #fafafa; outline: none; transition: border-color 0.2s; -webkit-appearance: none; }
-    .modal-field input:focus, .modal-field select:focus { border-color: #c0392b; background: #fff; }
+
+    .modal-field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .modal-field input, .modal-field select, .modal-field textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #e8e0d8;
+      border-radius: 10px;
+      font-size: 15px;
+      color: #1a1a1a;
+      background: #fafafa;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      font-family: inherit;
+    }
+
+    .modal-field textarea { resize: none; height: 72px; }
+
+    .modal-field input:focus, .modal-field select:focus, .modal-field textarea:focus {
+      border-color: #d94040;
+      background: #fff;
+    }
+
     .modal-buttons { display: flex; gap: 10px; margin-top: 4px; }
-    .btn-cancel, .btn-save { flex: 1; padding: 14px; border-radius: 12px; font-size: 16px; font-weight: 600; border: none; cursor: pointer; }
+
+    .btn-cancel, .btn-save {
+      flex: 1;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
     .btn-cancel { background: #f0e8e0; color: #888; }
-    .btn-save { background: #c0392b; color: #fff; }
-    .memory-content { background: #fff; border-radius: 12px; padding: 20px; color: #888; font-size: 14px; text-align: center; margin-top: 8px; }
+    .btn-save   { background: #d94040; color: #fff; }
+    .btn-save:active { opacity: 0.85; }
+
+    /* ── Memory tab ── */
+    .memory-content {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      color: #999;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 8px;
+    }
   </style>
 </head>
 <body>
+
 <div class="header">
   <div class="header-top">
-    <div class="header-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+    <div class="header-icon">
+      <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+    </div>
     <span class="header-title">Productivity</span>
   </div>
   <div class="tabs">
@@ -94,39 +362,297 @@
     <button class="tab" onclick="switchTab('memory')">Memory</button>
   </div>
 </div>
+
 <div class="content" id="tasks-tab">
   <div id="task-list"></div>
-  <button class="add-task-btn" onclick="openModal()">+ Add task</button>
 </div>
+
 <div class="content" id="memory-tab" style="display:none">
-  <div class="memory-content">Memory notes will appear here.<br/>Use the desktop app to manage memory entries.</div>
+  <div class="memory-content">
+    Memory notes appear here.<br/>Use the desktop app to manage memory entries.
+  </div>
 </div>
+
+<!-- Add Task Modal -->
 <div class="modal-overlay" id="modal" onclick="closeModalOnBg(event)">
   <div class="modal">
     <h3>New Task</h3>
-    <div class="modal-field"><label>Task Title</label><input type="text" id="new-title" placeholder="What needs to be done?" /></div>
-    <div class="modal-field"><label>Note (optional)</label><input type="text" id="new-note" placeholder="Add a note..." /></div>
-    <div class="modal-field"><label>Priority</label><select id="new-priority"><option value="high">High Priority</option><option value="medium">Medium Priority</option><option value="low">Low Priority</option></select></div>
-    <div class="modal-buttons"><button class="btn-cancel" onclick="closeModal()">Cancel</button><button class="btn-save" onclick="saveTask()">Add Task</button></div>
+    <div class="modal-field">
+      <label>Task Title</label>
+      <input type="text" id="new-title" placeholder="What needs to be done?" />
+    </div>
+    <div class="modal-field">
+      <label>Note (optional)</label>
+      <textarea id="new-note" placeholder="Add context, details, links..."></textarea>
+    </div>
+    <div class="modal-field">
+      <label>Section</label>
+      <select id="new-section">
+        <option value="in-progress">In Progress</option>
+        <option value="high">High Priority</option>
+        <option value="medium">Medium Priority</option>
+        <option value="low">Low Priority</option>
+      </select>
+    </div>
+    <div class="modal-buttons">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-save" onclick="saveTask()">Add Task</button>
+    </div>
   </div>
 </div>
+
 <script>
-const DEFAULT_TASKS=[{id:1,priority:'high',done:true,title:'Corso ADHD coach',note:'',subtasks:[]},{id:2,priority:'high',done:true,title:'Check e-mail tipo job MH',note:'sparito',subtasks:[]},{id:3,priority:'high',done:true,title:'Email SGI contacting Caty',note:'',subtasks:[]},{id:4,priority:'high',done:true,title:'Check AI model course if subscription',note:'',subtasks:[]},{id:5,priority:'high',done:false,title:'Direct debit carte nuove e valutare balance transfer',note:'',subtasks:[{id:51,done:false,text:'Lloyds DD'},{id:52,done:false,text:'Lista tutte le carte con rispettive amounts'}]}];
-let tasks=loadTasks(),nextId=Math.max(...tasks.map(t=>t.id),100)+1;
-function loadTasks(){try{const s=localStorage.getItem('productivity-tasks');return s?JSON.parse(s):JSON.parse(JSON.stringify(DEFAULT_TASKS));}catch{return JSON.parse(JSON.stringify(DEFAULT_TASKS));}}
-function saveTasks(){localStorage.setItem('productivity-tasks',JSON.stringify(tasks));}
-function switchTab(tab){document.querySelectorAll('.tab').forEach((t,i)=>{t.classList.toggle('active',(i===0&&tab==='tasks')||(i===1&&tab==='memory'));});document.getElementById('tasks-tab').style.display=tab==='tasks'?'':'none';document.getElementById('memory-tab').style.display=tab==='memory'?'':'none';}
-const PRIORITIES=[{key:'high',label:'HIGH PRIORITY',cls:''},{key:'medium',label:'MEDIUM PRIORITY',cls:'medium'},{key:'low',label:'LOW PRIORITY',cls:'low'}];
-function render(){const list=document.getElementById('task-list');list.innerHTML='';PRIORITIES.forEach(({key,label,cls})=>{const group=tasks.filter(t=>t.priority===key);if(!group.length)return;const section=document.createElement('div');section.className='priority-section';const header=document.createElement('div');header.className='priority-header '+cls;header.textContent=label;section.appendChild(header);const body=document.createElement('div');body.className='priority-body';group.forEach(task=>body.appendChild(renderTask(task,cls)));section.appendChild(body);list.appendChild(section);});}
-function renderTask(task,cls){const card=document.createElement('div');card.className='task-card '+(cls||'');const row=document.createElement('div');row.className='task-row';const cb=document.createElement('div');cb.className='checkbox '+(task.done?'checked':'');cb.onclick=()=>{task.done=!task.done;saveTasks();render();};const body=document.createElement('div');body.className='task-body';const title=document.createElement('div');title.className='task-title '+(task.done?'done':'');title.textContent=task.title;body.appendChild(title);if(task.note){const note=document.createElement('div');note.className='task-note';note.textContent=task.note;body.appendChild(note);}const actions=document.createElement('div');actions.className='task-actions';const addSubBtn=document.createElement('button');addSubBtn.className='btn-icon';addSubBtn.innerHTML='+';addSubBtn.onclick=(e)=>{e.stopPropagation();addSubtask(task.id);};const delBtn=document.createElement('button');delBtn.className='btn-icon delete';delBtn.innerHTML='x';delBtn.onclick=(e)=>{e.stopPropagation();deleteTask(task.id);};actions.appendChild(addSubBtn);actions.appendChild(delBtn);row.appendChild(cb);row.appendChild(body);row.appendChild(actions);card.appendChild(row);if(task.subtasks&&task.subtasks.length){const subs=document.createElement('div');subs.className='subtasks';task.subtasks.forEach(sub=>{const sr=document.createElement('div');sr.className='subtask-row';const scb=document.createElement('div');scb.className='subtask-checkbox '+(sub.done?'checked':'');scb.onclick=()=>{sub.done=!sub.done;saveTasks();render();};const st=document.createElement('span');st.className='subtask-text '+(sub.done?'done':'');st.textContent=sub.text;const sd=document.createElement('span');sd.className='subtask-delete';sd.textContent='x';sd.onclick=()=>{task.subtasks=task.subtasks.filter(s=>s.id!==sub.id);saveTasks();render();};sr.appendChild(scb);sr.appendChild(st);sr.appendChild(sd);subs.appendChild(sr);});card.appendChild(subs);}return card;}
-function deleteTask(id){tasks=tasks.filter(t=>t.id!==id);saveTasks();render();}
-function addSubtask(taskId){const text=prompt('Subtask name:');if(!text||!text.trim())return;const task=tasks.find(t=>t.id===taskId);if(!task)return;if(!task.subtasks)task.subtasks=[];task.subtasks.push({id:nextId++,done:false,text:text.trim()});saveTasks();render();}
-function openModal(){document.getElementById('modal').classList.add('open');setTimeout(()=>document.getElementById('new-title').focus(),300);}
-function closeModal(){document.getElementById('modal').classList.remove('open');document.getElementById('new-title').value='';document.getElementById('new-note').value='';document.getElementById('new-priority').value='high';}
-function closeModalOnBg(e){if(e.target===document.getElementById('modal'))closeModal();}
-function saveTask(){const title=document.getElementById('new-title').value.trim();if(!title){document.getElementById('new-title').focus();return;}const note=document.getElementById('new-note').value.trim();const priority=document.getElementById('new-priority').value;tasks.push({id:nextId++,priority,done:false,title,note,subtasks:[]});saveTasks();render();closeModal();}
-document.getElementById('new-title').addEventListener('keydown',e=>{if(e.key==='Enter')saveTask();if(e.key==='Escape')closeModal();});
-if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
+// Default tasks matching your dashboard
+const DEFAULT_TASKS = [
+  // IN PROGRESS
+  {
+    id: 1, section: 'in-progress', done: false,
+    title: 'Refund Affogato',
+    note: 'Email sent 4 Apr 2026 to hello@affogato.ai. Deadline 18 Apr. Paid 48 via Visa Debit Nationwide. If no reply chargeback.',
+    subtasks: []
+  },
+  {
+    id: 2, section: 'in-progress', done: false,
+    title: 'ADHD Coach course',
+    note: 'Purchased 89 via PayPal on 22 Dec 2025. Login: efficientcoach.naturalistico.com | Email: 123consulting@gmail.com',
+    subtasks: []
+  },
+  {
+    id: 3, section: 'in-progress', done: false,
+    title: 'MH job follow-up',
+    note: 'Follow-up email sent 4 Apr 2026 to samuel.cheslin@nhs.net re: Peer Support Worker vacancy (NHS Jobs)',
+    subtasks: []
+  },
+  // HIGH PRIORITY
+  {
+    id: 4, section: 'high', done: true,
+    title: 'Check AI model course if subscription',
+    note: '', subtasks: []
+  },
+  {
+    id: 5, section: 'high', done: false,
+    title: 'Direct debit carte nuove e valutare balance transfer',
+    note: '',
+    subtasks: [
+      { id: 51, done: false, text: 'Lloyds DD' },
+      { id: 52, done: false, text: 'Lista tutte le carte con rispettive amounts' },
+      { id: 53, done: false, text: 'Card Jaja direct debit ok' }
+    ]
+  },
+  // MEDIUM PRIORITY
+  {
+    id: 6, section: 'medium', done: false,
+    title: 'Crea mio profilo vita/esperienza etc',
+    note: '', subtasks: []
+  },
+  {
+    id: 7, section: 'medium', done: false,
+    title: 'Conti Roma Katey',
+    note: '', subtasks: []
+  },
+  {
+    id: 8, section: 'medium', done: false,
+    title: 'Translated Data Annotation?',
+    note: '', subtasks: []
+  },
+  {
+    id: 9, section: 'medium', done: false,
+    title: 'Check script AI newsletter',
+    note: 'Google Script', subtasks: []
+  },
+  {
+    id: 10, section: 'medium', done: false,
+    title: 'AI video citata su newsletter AI',
+    note: '', subtasks: []
+  },
+  {
+    id: 11, section: 'medium', done: false,
+    title: 'AI Annotation Data application?',
+    note: '', subtasks: []
+  },
+  // LOW PRIORITY
+  {
+    id: 12, section: 'low', done: false,
+    title: 'Update Giorgio Notebook',
+    note: '', subtasks: []
+  },
+  {
+    id: 13, section: 'low', done: false,
+    title: 'Introducing Trello or Asana into LP',
+    note: 'email soci + training suggestions', subtasks: []
+  },
+  {
+    id: 14, section: 'low', done: false,
+    title: 'Transfer Daimoku hours',
+    note: 'da post-it a Daimoku chart', subtasks: []
+  }
+];
+
+let tasks = loadTasks();
+let nextId = Math.max(...tasks.flatMap(t => [t.id, ...(t.subtasks||[]).map(s=>s.id)]), 100) + 1;
+let addingToSection = 'in-progress';
+
+function loadTasks() {
+  try {
+    const saved = localStorage.getItem('productivity-tasks-v2');
+    return saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(DEFAULT_TASKS));
+  } catch { return JSON.parse(JSON.stringify(DEFAULT_TASKS)); }
+}
+
+function saveTasks() {
+  localStorage.setItem('productivity-tasks-v2', JSON.stringify(tasks));
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach((t, i) => {
+    t.classList.toggle('active', (i === 0 && tab === 'tasks') || (i === 1 && tab === 'memory'));
+  });
+  document.getElementById('tasks-tab').style.display = tab === 'tasks' ? '' : 'none';
+  document.getElementById('memory-tab').style.display = tab === 'memory' ? '' : 'none';
+}
+
+const SECTIONS = [
+  { key: 'in-progress', label: 'In Progress' },
+  { key: 'high',        label: 'High Priority' },
+  { key: 'medium',      label: 'Medium Priority' },
+  { key: 'low',         label: 'Low Priority' }
+];
+
+function render() {
+  const list = document.getElementById('task-list');
+  list.innerHTML = '';
+  SECTIONS.forEach(({ key, label }) => {
+    const group = tasks.filter(t => t.section === key);
+    const section = document.createElement('div');
+    section.className = 'task-section';
+    const header = document.createElement('div');
+    header.className = 'section-header ' + key;
+    header.innerHTML = label.toUpperCase() + ' <span class="section-count ' + key + '">' + group.length + '</span>';
+    section.appendChild(header);
+    const body = document.createElement('div');
+    body.className = 'section-body';
+    group.forEach(task => body.appendChild(renderTask(task, key)));
+    const addRow = document.createElement('div');
+    addRow.className = 'add-task-row';
+    addRow.innerHTML = '+ Add task';
+    addRow.onclick = () => openModal(key);
+    body.appendChild(addRow);
+    section.appendChild(body);
+    list.appendChild(section);
+  });
+}
+
+function renderTask(task, sectionKey) {
+  const card = document.createElement('div');
+  card.className = 'task-card ' + sectionKey;
+  const row = document.createElement('div');
+  row.className = 'task-row';
+  const cb = document.createElement('div');
+  cb.className = 'checkbox ' + (task.done ? 'checked' : '');
+  cb.onclick = () => { task.done = !task.done; saveTasks(); render(); };
+  const body = document.createElement('div');
+  body.className = 'task-body';
+  const title = document.createElement('div');
+  title.className = 'task-title ' + (task.done ? 'done' : '');
+  title.textContent = task.title;
+  body.appendChild(title);
+  if (task.note) {
+    const note = document.createElement('div');
+    note.className = 'task-note';
+    note.textContent = task.note;
+    body.appendChild(note);
+  }
+  const actions = document.createElement('div');
+  actions.className = 'task-actions';
+  const addSubBtn = document.createElement('button');
+  addSubBtn.className = 'btn-icon';
+  addSubBtn.innerHTML = '+';
+  addSubBtn.onclick = e => { e.stopPropagation(); addSubtask(task.id); };
+  const delBtn = document.createElement('button');
+  delBtn.className = 'btn-icon delete';
+  delBtn.innerHTML = 'x';
+  delBtn.onclick = e => { e.stopPropagation(); deleteTask(task.id); };
+  actions.appendChild(addSubBtn);
+  actions.appendChild(delBtn);
+  row.appendChild(cb);
+  row.appendChild(body);
+  row.appendChild(actions);
+  card.appendChild(row);
+  if (task.subtasks && task.subtasks.length > 0) {
+    const subs = document.createElement('div');
+    subs.className = 'subtasks';
+    task.subtasks.forEach(sub => {
+      const sr = document.createElement('div');
+      sr.className = 'subtask-row';
+      const scb = document.createElement('div');
+      scb.className = 'subtask-checkbox ' + (sub.done ? 'checked' : '');
+      scb.onclick = () => { sub.done = !sub.done; saveTasks(); render(); };
+      const st = document.createElement('span');
+      st.className = 'subtask-text ' + (sub.done ? 'done' : '');
+      st.textContent = sub.text;
+      const sd = document.createElement('span');
+      sd.className = 'subtask-delete';
+      sd.textContent = 'x';
+      sd.onclick = () => { task.subtasks = task.subtasks.filter(s => s.id !== sub.id); saveTasks(); render(); };
+      sr.appendChild(scb); sr.appendChild(st); sr.appendChild(sd);
+      subs.appendChild(sr);
+    });
+    card.appendChild(subs);
+  }
+  return card;
+}
+
+function deleteTask(id) {
+  tasks = tasks.filter(t => t.id !== id);
+  saveTasks(); render();
+}
+
+function addSubtask(taskId) {
+  const text = prompt('Subtask:');
+  if (!text || !text.trim()) return;
+  const task = tasks.find(t => t.id === taskId);
+  if (!task) return;
+  if (!task.subtasks) task.subtasks = [];
+  task.subtasks.push({ id: nextId++, done: false, text: text.trim() });
+  saveTasks(); render();
+}
+
+function openModal(sectionKey) {
+  addingToSection = sectionKey || 'in-progress';
+  document.getElementById('new-section').value = addingToSection;
+  document.getElementById('modal').classList.add('open');
+  setTimeout(() => document.getElementById('new-title').focus(), 300);
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.getElementById('new-title').value = '';
+  document.getElementById('new-note').value = '';
+  document.getElementById('new-section').value = 'in-progress';
+}
+
+function closeModalOnBg(e) {
+  if (e.target === document.getElementById('modal')) closeModal();
+}
+
+function saveTask() {
+  const title = document.getElementById('new-title').value.trim();
+  if (!title) { document.getElementById('new-title').focus(); return; }
+  const note = document.getElementById('new-note').value.trim();
+  const section = document.getElementById('new-section').value;
+  tasks.push({ id: nextId++, section, done: false, title, note, subtasks: [] });
+  saveTasks(); render(); closeModal();
+}
+
+document.getElementById('new-title').addEventListener('keydown', e => {
+  if (e.key === 'Enter') saveTask();
+  if (e.key === 'Escape') closeModal();
+});
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').catch(() => {});
+}
+
 render();
 </script>
 </body>
